@@ -43,7 +43,7 @@ def new_event():
     """
 
     if request.json is None:
-        print 'Invalid Content-Type'
+        print ('Invalid Content-Type')
         return 'Content-Type must be application/json and the request body must contain valid JSON', 400
 
     data = request.json
@@ -52,7 +52,7 @@ def new_event():
     text, base_url = process_data(data, object_kind)
 
     if len(text) == 0:
-        print 'Text was empty so nothing sent to Mattermost, object_kind=%s' % object_kind
+        print ('Text was empty so nothing sent to Mattermost, object_kind=%s' % object_kind)
         return 'OK'
 
     if len(base_url) != 0:
@@ -69,7 +69,7 @@ def new_event_hook(use_this_hook):
     """
 
     if request.json is None:
-        print 'Invalid Content-Type'
+        print ('Invalid Content-Type')
         return 'Content-Type must be application/json and the request body must contain valid JSON', 400
 
     data = request.json
@@ -78,7 +78,7 @@ def new_event_hook(use_this_hook):
     text, base_url = process_data(data, object_kind)
 
     if len(text) == 0:
-        print 'Text was empty so nothing sent to Mattermost, object_kind=%s' % object_kind
+        print ('Text was empty so nothing sent to Mattermost, object_kind=%s' % object_kind)
         return 'OK'
 
     if len(base_url) != 0:
@@ -233,7 +233,7 @@ def post_text(text, url_to_use):
         r = requests.post(url_to_use, headers=headers, data=json.dumps(data), verify=False)
 
     if r.status_code is not requests.codes.ok:
-        print 'Encountered error posting to Mattermost URL %s, status=%d, response_body=%s' % (MATTERMOST_WEBHOOK_URL, r.status_code, r.json())
+        print ('Encountered error posting to Mattermost URL %s, status=%d, response_body=%s' % (MATTERMOST_WEBHOOK_URL, r.status_code, r.json()))
 
 def fix_gitlab_links(base_url, text):
     """
@@ -277,7 +277,7 @@ if __name__ == "__main__":
     REPORT_EVENTS[MERGE_EVENT] = os.environ.get('MERGE_TRIGGER', str(REPORT_EVENTS[MERGE_EVENT])) == 'True'
 
     if len(MATTERMOST_WEBHOOK_URL) == 0:
-        print 'MATTERMOST_WEBHOOK_URL must be configured. Please see instructions in README.md'
+        print ('MATTERMOST_WEBHOOK_URL must be configured. Please see instructions in README.md')
         sys.exit()
 
     port = int(os.environ.get('PORT', 5000))
