@@ -95,13 +95,13 @@ def process_data(data, object_kind):
     base_url = ''
 
     if REPORT_EVENTS[PUSH_EVENT] and  object_kind == PUSH_EVENT:
-        text = '%s pushed %d commit(s) [%s] into the `%s` branch for project [%s](%s).' % (
+        text = '%s pushed %d commit(s) into the `%s` branch for project [%s](%s).\n message : %s' % (
             data['user_name'],
             data['total_commits_count'],
-            data['commits'][0]['message'],
             data['ref'],
             data['repository']['name'],
-            data['repository']['homepage']
+            data['repository']['homepage'],
+            data['commits'][0]['message']
         )
     elif REPORT_EVENTS[ISSUE_EVENT] and object_kind == ISSUE_EVENT:
         action = data['object_attributes']['action']
