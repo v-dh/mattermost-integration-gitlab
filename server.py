@@ -9,7 +9,7 @@ from flask import request
 app = Flask(__name__)
 
 USERNAME = 'gitlab'
-ICON_URL = 'https://gitlab.com/uploads/project/avatar/13083/gitlab-logo-square.png'
+ICON_URL = 'https://cdn.iconscout.com/icon/free/png-256/gitlab-282507.png'
 MATTERMOST_WEBHOOK_URL = '' # Paste the Mattermost webhook URL you created here
 CHANNEL = '' # Leave this blank to post to the default channel of your webhook
 SSL_VERIFY = True
